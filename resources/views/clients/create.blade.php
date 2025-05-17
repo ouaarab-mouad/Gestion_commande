@@ -28,7 +28,7 @@
                         <div class="form-group row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" >
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                         <div class="form-group row mb-3">
                             <label for="telephone" class="col-md-4 col-form-label text-md-right">Téléphone</label>
                             <div class="col-md-6">
-                                <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') }}" required>
+                                <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') }}" >
                                 @error('telephone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                         <div class="form-group row mb-3">
                             <label for="adresse" class="col-md-4 col-form-label text-md-right">Adresse</label>
                             <div class="col-md-6">
-                                <textarea id="adresse" class="form-control @error('adresse') is-invalid @enderror" name="adresse" rows="3" required>{{ old('adresse') }}</textarea>
+                                <textarea id="adresse" class="form-control @error('adresse') is-invalid @enderror" name="adresse" rows="3" >{{ old('adresse') }}</textarea>
                                 @error('adresse')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -13,7 +13,7 @@
 
                         <div class="mb-3">
                             <label for="nom" class="form-label">{{ __('Nom') }}</label>
-                            <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+                            <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}"  autocomplete="nom" autofocus>
                             @error('nom')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                         <div class="mb-3">
                             <label for="prix_unitaire" class="form-label">{{ __('Prix unitaire') }}</label>
-                            <input id="prix_unitaire" type="number" step="0.01" class="form-control @error('prix_unitaire') is-invalid @enderror" name="prix_unitaire" value="{{ old('prix_unitaire') }}" required>
+                            <input id="prix_unitaire" type="number" step="0.01" class="form-control @error('prix_unitaire') is-invalid @enderror" name="prix_unitaire" value="{{ old('prix_unitaire') }}" >
                             @error('prix_unitaire')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -43,7 +43,7 @@
 
                         <div class="mb-3">
                             <label for="stock" class="form-label">{{ __('Stock') }}</label>
-                            <input id="stock" type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" required min="0">
+                            <input id="stock" type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}"  min="0">
                             @error('stock')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Liste des produits</h5>
                     <a href="{{ route('produits.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nouveau produit
+                        <i class="fas fa-plus me-1"></i> Nouveau produit
                     </a>
                 </div>
 
@@ -19,16 +19,22 @@
                         </div>
                     @endif
 
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
+                        <table class="table table-hover">
+                            <thead class="table-light">
                                 <tr>
                                     <th>ID</th>
                                     <th>Nom</th>
                                     <th>Description</th>
                                     <th>Prix</th>
                                     <th>Catégorie</th>
-                                    <th>Actions</th>
+                                    <th class="text-end">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,20 +45,22 @@
                                         <td>{{ $produit->description }}</td>
                                         <td>{{ number_format($produit->prix_unitaire, 2) }} €</td>
                                         <td>{{ $produit->categorie->nom ?? 'Non catégorisé' }}</td>
-                                        <td>
-                                            <a href="{{ route('produits.show', $produit) }}" class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="{{ route('produits.edit', $produit) }}" class="btn btn-sm btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                        <td class="text-end">
+                                            <div class="btn-group">
+                                                <a href="{{ route('produits.show', $produit) }}" class="btn btn-info btn-sm">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="{{ route('produits.edit', $produit) }}" class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty
@@ -62,6 +70,41 @@
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div class="text-muted">
+                            Affichage de {{ $produits->firstItem() }} à {{ $produits->lastItem() }} sur {{ $produits->total() }} produits
+                        </div>
+                        <nav>
+                            <ul class="pagination mb-0">
+                                @if($produits->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Précédent</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $produits->previousPageUrl() }}">Précédent</a>
+                                    </li>
+                                @endif
+
+                                @foreach($produits->getUrlRange(1, $produits->lastPage()) as $page => $url)
+                                    <li class="page-item {{ $page == $produits->currentPage() ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                    </li>
+                                @endforeach
+
+                                @if($produits->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $produits->nextPageUrl() }}">Suivant</a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Suivant</span>
+                                    </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

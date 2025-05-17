@@ -86,6 +86,26 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="navbar-nav ms-auto">
+                        @auth
+                        <li class="nav-item">
+                            <span class="nav-link">{{ Auth::user()->name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link nav-link" style="display:inline;cursor:pointer;">Déconnecter</button>
+                            </form>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        </li>
+                        @endauth
+                    </ul>
                 </div>
             </div>
         </nav>

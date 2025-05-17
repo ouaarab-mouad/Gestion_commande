@@ -45,12 +45,12 @@
 
                     <div class="row mb-3">
                         <div class="col-md-4 fw-bold">Date de création:</div>
-                        <div class="col-md-8">{{ $produit->created_at->format('d/m/Y H:i') }}</div>
+                        <div class="col-md-8">{{ $produit->created_at ? $produit->created_at->format('d/m/Y H:i') : 'Non disponible' }}</div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-4 fw-bold">Dernière modification:</div>
-                        <div class="col-md-8">{{ $produit->updated_at->format('d/m/Y H:i') }}</div>
+                        <div class="col-md-8">{{ $produit->updated_at ? $produit->updated_at->format('d/m/Y H:i') : 'Non disponible' }}</div>
                     </div>
 
                     @if($produit->commandes->count() > 0)

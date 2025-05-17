@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Détails de la catégorie</h5>
                     <div>
-                        <a href="{{ route('categories.edit', ['category' => $categorie->id]) }}" class="btn btn-warning btn-sm">
+                        <a href="{{ route('categories.edit', ['categorie' => $categorie->id]) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-edit"></i> Modifier
                         </a>
                         <a href="{{ route('categories.index') }}" class="btn btn-secondary btn-sm">

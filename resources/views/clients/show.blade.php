@@ -7,12 +7,12 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Détails du client</h5>
-                    <div>
-                        <a href="{{ route('clients.edit', $client) }}" class="btn btn-warning btn-sm">
-                            <i class="fas fa-edit"></i> Modifier
+                    <div class="btn-group">
+                        <a href="{{ route('clients.edit', $client) }}" class="btn btn-warning">
+                            <i class="fas fa-edit me-1"></i> Modifier
                         </a>
-                        <a href="{{ route('clients.index') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-arrow-left"></i> Retour
+                        <a href="{{ route('clients.index') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i> Retour
                         </a>
                     </div>
                 </div>
